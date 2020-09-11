@@ -33,4 +33,11 @@ module.exports = {
       }
     }
   },
+  pipe: <A>(arr: Array<A>, callbacks: ExecuteFunc<A>[]) => {
+    let newArr = arr;
+    for (let i = 0; i < callbacks.length; i++) {
+      newArr = callbacks[i].execute(newArr);
+    }
+    return newArr;
+  },
 };
